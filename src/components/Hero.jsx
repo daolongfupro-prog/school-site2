@@ -125,8 +125,8 @@ export default function Hero() {
               className="relative z-10"
             >
               <motion.div
-                animate={{ y: [0, -7, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
+                animate={{ y: -14 }}
+                transition={{ duration: 2.1, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 1.4 }}
               >
                 <div className="relative w-[280px] sm:w-[320px] lg:w-[380px] xl:w-[420px]">
                   {/* Photo */}
