@@ -51,9 +51,10 @@ export default function Fears() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[1.5rem] sm:text-[1.8rem] lg:text-[2.2rem] xl:text-[2.6rem] font-bold text-navy leading-tight whitespace-pre-line"
+            className="text-[1.5rem] sm:text-[1.8rem] lg:text-[2.2rem] xl:text-[2.6rem] font-bold text-navy leading-tight"
           >
-            {f.title}
+            <span className="sm:hidden whitespace-pre-line">{'4 главных страха\nперед стартом\n— и почему они\nлишь иллюзия'}</span>
+            <span className="hidden sm:inline whitespace-pre-line">{f.title}</span>
           </motion.h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

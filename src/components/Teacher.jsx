@@ -31,51 +31,55 @@ export default function Teacher() {
             />
 
             {/* Portrait photo */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-navy/12">
-              <img
-                src="/images/lucia-portrait.jpg"
-                alt={tc.name}
-                className="w-full object-cover object-top"
-                style={{ aspectRatio: '3/4', maxHeight: '580px' }}
-              />
-              {/* Badge: Собственная методика обучения */}
+            <div className="relative shadow-2xl shadow-navy/12 rounded-3xl">
+              <div className="rounded-3xl overflow-hidden">
+                <img
+                  src="/images/lucia-portrait.jpg"
+                  alt={tc.name}
+                  className="w-full object-cover object-top"
+                  style={{ aspectRatio: '3/4', maxHeight: '580px' }}
+                />
+              </div>
+              {/* Badge: Собственная методика обучения — вверху */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.55, duration: 0.4 }}
-                className="absolute -right-5 bottom-10 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+                className="absolute -right-5 top-8 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
               >
-                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[2].label}</p>
+                <p className="text-navy font-bold text-xs max-w-[145px] leading-snug whitespace-pre-line">{stats[2].label}</p>
               </motion.div>
             </div>
 
             {/* Diplomas photo */}
-            <div className="relative mt-4 rounded-2xl overflow-hidden shadow-lg shadow-navy/10">
-              <img
-                src="/images/photo_2024-11-17_19-06-42.jpg"
-                alt="Дипломы и награды"
-                className="w-full object-cover"
-              />
-              {/* Badge: Массажист международного уровня */}
+            <div className="relative mt-4 shadow-lg shadow-navy/10 rounded-2xl">
+              <div className="rounded-2xl overflow-hidden">
+                <img
+                  src="/images/photo_2024-11-17_19-06-42.jpg"
+                  alt="Дипломы и награды"
+                  className="w-full object-cover"
+                />
+              </div>
+              {/* Badge: Инновации в массаже — слева, выходит за фото */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.4 }}
-                className="absolute -left-5 top-6 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+                className="absolute -left-5 top-5 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
               >
-                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[0].label}</p>
+                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[1].label}</p>
               </motion.div>
-              {/* Badge: Инновации в массаже */}
+              {/* Badge: Массажист международного уровня — справа, выходит за фото */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.55, duration: 0.4 }}
-                className="absolute -right-5 bottom-6 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+                className="absolute -right-5 bottom-5 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
               >
-                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[1].label}</p>
+                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[0].label}</p>
               </motion.div>
             </div>
           </motion.div>
@@ -157,7 +161,7 @@ export default function Teacher() {
               <span className="absolute -top-2 -left-1 text-[120px] font-black leading-none text-navy/8 select-none pointer-events-none">
                 "
               </span>
-              <p className="text-navy/75 leading-relaxed text-[15px] italic relative z-10">
+              <p className="text-navy/75 leading-relaxed text-[15px] italic relative z-10 pt-10">
                 {tc.quote1}
               </p>
               <p className="text-navy/75 leading-relaxed text-[15px] italic relative z-10 mt-4">
