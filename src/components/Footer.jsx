@@ -26,10 +26,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contacts */}
-          <div>
+          {/* Contacts + Map */}
+          <div className="flex flex-col">
             <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">{f.contactsLabel}</p>
-            <div className="space-y-3">
+            <div className="space-y-3 mb-4">
               <div className="flex items-start gap-3">
                 <svg className="w-4 h-4 text-white/30 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -46,12 +46,25 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+            {/* Map stretches to fill the rest of the column */}
+            <div className="flex-1 rounded-2xl overflow-hidden" style={{ minHeight: '140px' }}>
+              <iframe
+                title="Карта"
+                src="https://maps.google.com/maps?q=Ташкент+Яккасарайский+район+улица+Бобура+69&output=embed&hl=ru&z=16"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block', minHeight: '140px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
 
-          {/* Social */}
-          <div>
+          {/* Social + Yandex Go */}
+          <div className="flex flex-col">
             <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">{f.socialLabel}</p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-6">
               <a
                 href={INSTAGRAM}
                 target="_blank"
@@ -75,26 +88,10 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-          </div>
-        </div>
 
-        {/* Map + Yandex GO */}
-        <div className="mb-10 lg:grid lg:grid-cols-3 lg:gap-10">
-          <div className="hidden lg:block" />
-          <div className="lg:col-span-2 flex flex-col sm:flex-row gap-4">
-            <div className="flex-1 rounded-2xl overflow-hidden" style={{ minHeight: '160px' }}>
-              <iframe
-                title="Карта"
-                src="https://maps.google.com/maps?q=Ташкент+Яккасарайский+район+улица+Бобура+69&output=embed&hl=ru&z=16"
-                width="100%"
-                height="100%"
-                style={{ border: 0, display: 'block', minHeight: '160px' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-            <div className="flex flex-col items-center justify-center gap-2 sm:w-48 flex-shrink-0">
+            {/* Yandex Go */}
+            <div className="flex flex-col items-start gap-2">
+              <p className="text-white/40 text-xs font-semibold uppercase tracking-widest">{f.taxiLabel || 'Вызвать такси'}</p>
               <a
                 href="https://go.yandex/route?end-lat=41.2883&end-lon=69.2693&utm_source=massage-school"
                 target="_blank"
@@ -104,7 +101,6 @@ export default function Footer() {
                 <span className="text-black font-medium text-lg leading-none">Яндекс</span>
                 <span className="text-black font-black text-xl italic leading-none">Go</span>
               </a>
-              <p className="text-white/40 text-xs font-semibold uppercase tracking-widest">Вызвать такси</p>
             </div>
           </div>
         </div>
@@ -112,8 +108,6 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/8 flex flex-col sm:flex-row gap-4 items-center justify-between">
           <p className="text-white/25 text-sm">{f.copyright}</p>
-
-
           <a href="#" className="text-white/25 text-sm hover:text-white/50 transition-colors">
             {f.privacy}
           </a>
