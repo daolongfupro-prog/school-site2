@@ -133,14 +133,14 @@ export default function Teacher() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-8 mb-10"
+              className="flex gap-5 sm:gap-8 mb-10"
             >
               {STAT_NUMS.map((num, i) => (
-                <div key={num} className="flex items-baseline gap-2.5">
-                  <span className="text-4xl font-bold leading-none" style={{ color: '#19265c' }}>
+                <div key={num} className="flex items-baseline gap-1.5 sm:gap-2.5">
+                  <span className="text-2xl sm:text-4xl font-bold leading-none" style={{ color: '#19265c' }}>
                     {num}
                   </span>
-                  <span className="text-navy/50 text-sm leading-tight whitespace-pre-line">
+                  <span className="text-navy/50 text-xs sm:text-sm leading-tight whitespace-pre-line">
                     {tc.statsLabels[i]}
                   </span>
                 </div>
