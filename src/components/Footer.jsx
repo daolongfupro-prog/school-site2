@@ -47,7 +47,7 @@ export default function Footer() {
               </div>
             </div>
             {/* Map stretches to fill the rest of the column */}
-            <div className="flex-1 rounded-2xl overflow-hidden" style={{ minHeight: '140px' }}>
+            <div className="flex-1 rounded-2xl overflow-hidden mt-6" style={{ minHeight: '140px' }}>
               <iframe
                 title="Карта"
                 src="https://maps.google.com/maps?q=Ташкент+Яккасарайский+район+улица+Бобура+69&output=embed&hl=ru&z=16"
@@ -90,7 +90,7 @@ export default function Footer() {
             </div>
 
             {/* Yandex Go */}
-            <div className="flex flex-col items-start gap-2">
+            <div className="flex-1 flex flex-col items-start justify-center gap-2">
               <p className="text-white/40 text-xs font-semibold uppercase tracking-widest">{f.taxiLabel || 'Вызвать такси'}</p>
               <a
                 href="https://go.yandex/route?end-lat=41.2883&end-lon=69.2693&utm_source=massage-school"
