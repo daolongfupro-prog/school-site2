@@ -1,20 +1,17 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const TG = 'https://t.me/YOUR_BOT_HERE'
-
-const included = [
-  'Место на 2-часовом практическом уроке — бесплатно',
-  'Руководство «Профессия-Антикризис: 7 причин + чек-лист старта» — сразу после регистрации',
-]
 
 export default function FinalCTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const { t } = useLanguage()
+  const c = t.finalCta
 
   return (
     <section id="register" className="py-24 lg:py-32 bg-navy relative overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/4 rounded-full blur-[120px]" />
         <div
@@ -28,7 +25,6 @@ export default function FinalCTA() {
       </div>
 
       <div className="relative max-w-3xl mx-auto px-5 lg:px-12 text-center" ref={ref}>
-
         {/* Spots counter */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -42,7 +38,7 @@ export default function FinalCTA() {
             className="w-2.5 h-2.5 rounded-full bg-red-400"
           />
           <span className="text-white/80 text-sm font-medium">
-            Осталось <span className="text-white font-bold">10 мест из 10</span> на ближайший урок
+            {c.spots} <span className="text-white font-bold">{c.spotsNum}</span> {c.spotsRight}
           </span>
         </motion.div>
 
@@ -50,9 +46,9 @@ export default function FinalCTA() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-5"
+          className="text-[1.8rem] sm:text-[2.2rem] lg:text-[2.8rem] xl:text-[3.2rem] font-bold text-white leading-[1.08] mb-5"
         >
-          Ваш следующий шаг — один вечер
+          {c.title}
         </motion.h2>
 
         <motion.p
@@ -61,7 +57,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-white/60 text-lg lg:text-xl mb-12 max-w-xl mx-auto leading-relaxed"
         >
-          Не покупайте курс вслепую. Просто придите и попробуйте профессию руками — бесплатно.
+          {c.subtitle}
         </motion.p>
 
         {/* What's included */}
@@ -72,10 +68,10 @@ export default function FinalCTA() {
           className="bg-white/8 border border-white/12 rounded-2xl p-6 mb-10 text-left max-w-md mx-auto"
         >
           <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-4">
-            При регистрации вы получаете:
+            {c.includedLabel}
           </p>
           <div className="space-y-3">
-            {included.map((item) => (
+            {c.included.map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
                   <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +91,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="flex flex-col sm:flex-row gap-3 justify-center mb-10"
         >
-          {['Дата · 10:00', 'Дата · 16:00'].map((slot) => (
+          {c.slots.map((slot) => (
             <div
               key={slot}
               className="bg-white/8 border border-white/15 rounded-xl px-5 py-3 flex items-center gap-3"
@@ -123,12 +119,9 @@ export default function FinalCTA() {
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z" />
             </svg>
-            Занять место и получить руководство
+            {c.cta}
           </a>
-
-          <p className="text-white/30 text-sm mt-5">
-            Регистрация через Telegram · Без предоплаты — просто подтвердите присутствие
-          </p>
+          <p className="text-white/30 text-sm mt-5">{c.finePrint}</p>
         </motion.div>
       </div>
     </section>

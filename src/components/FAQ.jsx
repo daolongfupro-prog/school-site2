@@ -1,36 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-
-const faqs = [
-  {
-    q: 'Можно ли прийти совсем без опыта и без медицинского образования?',
-    a: 'Да. Именно для таких людей создан этот курс. Медицинское образование не нужно — нужны желание и готовность практиковать. Всему остальному научим с нуля.',
-  },
-  {
-    q: 'В чём приходить на открытый урок?',
-    a: 'В удобной одежде, в которой комфортно двигаться. Сменная обувь — по желанию. Всё остальное (масло, полотенца, кушетки) предоставляем мы.',
-  },
-  {
-    q: 'Нужно ли брать с собой масло или инструменты?',
-    a: 'Ничего брать не нужно. На открытом уроке все материалы предоставляет школа. На полный курс — также всё включено.',
-  },
-  {
-    q: 'Какой возраст подходит для обучения?',
-    a: 'Ограничений нет. На курсе учились люди от 20 до 55 лет. Главное — физическая готовность работать руками и желание освоить профессию.',
-  },
-  {
-    q: 'Сколько стоит полный курс?',
-    a: 'Стоимость и форматы обучения разбираем на открытом уроке — там же отвечаем на все вопросы лично. Запишитесь на урок, чтобы получить актуальную информацию.',
-  },
-  {
-    q: 'Выдают ли официальные документы?',
-    a: 'Да. По окончании курса вы получаете диплом и сертификат с указанием количества практических часов.',
-  },
-  {
-    q: 'Где находится школа?',
-    a: 'Ташкент. Точный адрес и ориентир сообщаем при регистрации.',
-  },
-]
+import { useLanguage } from '../context/LanguageContext'
 
 function FAQItem({ faq, index }) {
   const [open, setOpen] = useState(false)
@@ -41,7 +11,7 @@ function FAQItem({ faq, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className={`border-b border-white/10 last:border-0`}
+      className="border-b border-white/10 last:border-0"
     >
       <button
         onClick={() => setOpen((v) => !v)}
@@ -60,7 +30,6 @@ function FAQItem({ faq, index }) {
           </svg>
         </motion.div>
       </button>
-
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -70,9 +39,7 @@ function FAQItem({ faq, index }) {
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-white/60 leading-relaxed text-[15px] pr-12">
-              {faq.a}
-            </p>
+            <p className="pb-5 text-white/60 leading-relaxed text-[15px] pr-12">{faq.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -83,6 +50,8 @@ function FAQItem({ faq, index }) {
 export default function FAQ() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
+  const { t } = useLanguage()
+  const f = t.faq
 
   return (
     <section id="faq" className="py-24 lg:py-32 bg-navy-dark" style={{ background: '#0f1835' }}>
@@ -94,20 +63,19 @@ export default function FAQ() {
             transition={{ duration: 0.5 }}
             className="text-white/30 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
           >
-            Вопросы и ответы
+            {f.tag}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-5xl font-bold text-white leading-tight"
+            className="text-[1.5rem] sm:text-[1.8rem] lg:text-[2.2rem] xl:text-[2.6rem] font-bold text-white leading-tight"
           >
-            Часто задают эти вопросы
+            {f.title}
           </motion.h2>
         </div>
-
         <div className="divide-y divide-white/10">
-          {faqs.map((faq, i) => (
+          {f.items.map((faq, i) => (
             <FAQItem key={i} faq={faq} index={i} />
           ))}
         </div>

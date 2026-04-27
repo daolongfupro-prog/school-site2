@@ -1,42 +1,48 @@
+import { useLanguage } from '../context/LanguageContext'
+
 const TG = 'https://t.me/YOUR_BOT_HERE'
 const INSTAGRAM = 'https://instagram.com/YOUR_ACCOUNT'
-
 export default function Footer() {
+  const { t } = useLanguage()
+  const f = t.footer
+
   return (
-    <footer style={{ background: '#0a1126' }} className="text-white">
+    <footer style={{ background: '#0f1835' }} className="text-white">
       <div className="max-w-7xl mx-auto px-5 lg:px-12 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
 
           {/* Brand */}
           <div>
-            <img
-              src="/images/logo-white.png"
-              alt="Высшая Школа Массажа"
-              className="h-12 w-auto mb-4"
-            />
-            <p className="text-white font-semibold text-sm mb-1">Высшая Школа Массажа</p>
-            <p className="text-white/40 text-sm leading-relaxed">
-              Обучение массажу в Ташкенте<br />с выдачей диплома государственного образца
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/images/logo-white.png"
+                alt={f.brandName}
+                className="h-24 w-auto"
+              />
+              <div className="leading-none">
+                <p className="text-white font-semibold text-sm">{t.header.tagline1}</p>
+                <p className="text-white/50 text-xs mt-0.5">{t.header.tagline2}</p>
+              </div>
+            </div>
           </div>
 
           {/* Contacts */}
           <div>
-            <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">Контакты</p>
+            <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">{f.contactsLabel}</p>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <svg className="w-4 h-4 text-white/30 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <p className="text-white/55 text-sm">Ташкент — адрес сообщим при регистрации</p>
+                <p className="text-white/55 text-sm">{f.address}</p>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-4 h-4 text-white/30 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z" />
                 </svg>
                 <a href={TG} target="_blank" rel="noopener noreferrer" className="text-white/55 text-sm hover:text-white transition-colors">
-                  Telegram-бот школы
+                  {f.tgLink}
                 </a>
               </div>
             </div>
@@ -44,7 +50,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">Мы в соцсетях</p>
+            <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">{f.socialLabel}</p>
             <div className="flex gap-3">
               <a
                 href={INSTAGRAM}
@@ -72,11 +78,44 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Map + Yandex GO */}
+        <div className="mb-10 lg:grid lg:grid-cols-3 lg:gap-10">
+          <div className="hidden lg:block" />
+          <div className="lg:col-span-2 flex flex-col sm:flex-row gap-4">
+            <div className="flex-1 rounded-2xl overflow-hidden" style={{ minHeight: '160px' }}>
+              <iframe
+                title="Карта"
+                src="https://maps.google.com/maps?q=Ташкент+Яккасарайский+район+улица+Бобура+69&output=embed&hl=ru&z=16"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block', minHeight: '160px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2 sm:w-48 flex-shrink-0">
+              <a
+                href="https://go.yandex/route?end-lat=41.2883&end-lon=69.2693&utm_source=massage-school"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 bg-[#FFD400] hover:bg-[#f0c800] transition-colors duration-200 rounded-2xl px-6 py-4 shadow-lg shadow-black/20"
+              >
+                <span className="text-black font-medium text-lg leading-none">Яндекс</span>
+                <span className="text-black font-black text-xl italic leading-none">Go</span>
+              </a>
+              <p className="text-white/40 text-xs font-semibold uppercase tracking-widest">Вызвать такси</p>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/8 flex flex-col sm:flex-row gap-3 items-center justify-between">
-          <p className="text-white/25 text-sm">© 2026 Высшая Школа Массажа</p>
+        <div className="pt-8 border-t border-white/8 flex flex-col sm:flex-row gap-4 items-center justify-between">
+          <p className="text-white/25 text-sm">{f.copyright}</p>
+
+
           <a href="#" className="text-white/25 text-sm hover:text-white/50 transition-colors">
-            Политика конфиденциальности
+            {f.privacy}
           </a>
         </div>
       </div>

@@ -1,32 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-
-const fears = [
-  {
-    num: '01',
-    title: 'Нет медицинского образования',
-    answer:
-      'Для оздоровительного массажа не нужна степень врача. Нужна точная базовая анатомия — понять, где крепится мышца, чтобы работать с причиной боли, а не просто гладить кожу. Этому учат с первого занятия.',
-  },
-  {
-    num: '02',
-    title: 'Боюсь навредить клиенту',
-    answer:
-      'Страх навредить — признак ответственности, не слабости. Именно поэтому методика строится на анатомическом понимании: вы не заучиваете движения механически, а понимаете, что делаете и почему. Это делает вас безопасным мастером с первых сеансов.',
-  },
-  {
-    num: '03',
-    title: 'Нет физической силы',
-    answer:
-      'Профессиональный массаж — это не сила рук. Это эргономика тела. Грамотный мастер работает весом корпуса, а не пальцами. После пяти сеансов вы не устаёте — в отличие от самоучек, которые изнашивают суставы за год.',
-  },
-  {
-    num: '04',
-    title: 'Уже пробовал(а), но бросил(а)',
-    answer:
-      'Большинство бросают не из-за отсутствия способностей — а из-за неправильной базы. Без анатомии и постановки корпуса обучение превращается в заучивание движений. Мы строим понимание, которое остаётся с вами навсегда.',
-  },
-]
+import { useLanguage } from '../context/LanguageContext'
 
 function FearCard({ fear, index }) {
   const ref = useRef(null)
@@ -40,19 +14,17 @@ function FearCard({ fear, index }) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="group relative bg-white border border-gray-100 rounded-2xl p-8 hover:border-navy/20 hover:shadow-xl hover:shadow-navy/5 transition-all duration-400 overflow-hidden"
     >
-      {/* Ghost number */}
       <span className="absolute top-2 right-5 text-[7rem] font-black text-gray-50 group-hover:text-navy/5 transition-colors duration-500 select-none leading-none pointer-events-none">
         {fear.num}
       </span>
-
-      {/* Left accent bar */}
       <div className="absolute left-0 top-8 bottom-8 w-[3px] bg-navy rounded-r-full" />
-
-      <p className="text-navy/40 text-xs font-mono tracking-widest mb-3">{fear.num}</p>
       <h3 className="text-xl font-bold text-navy mb-4 pr-16 relative z-10 leading-snug">
         «{fear.title}»
       </h3>
-      <p className="text-gray-500 leading-relaxed relative z-10 text-[15px]">{fear.answer}</p>
+      <p className="text-gray-500 leading-relaxed relative z-10 text-[15px]">
+        {fear.lead && <strong className="font-semibold text-navy/75">{fear.lead} </strong>}
+        {fear.answer}
+      </p>
     </motion.div>
   )
 }
@@ -60,6 +32,8 @@ function FearCard({ fear, index }) {
 export default function Fears() {
   const titleRef = useRef(null)
   const inView = useInView(titleRef, { once: true })
+  const { t } = useLanguage()
+  const f = t.fears
 
   return (
     <section id="fears" className="py-24 lg:py-32 bg-white">
@@ -71,20 +45,19 @@ export default function Fears() {
             transition={{ duration: 0.5 }}
             className="text-navy/40 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
           >
-            Понимаем вас
+            {f.tag}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-5xl font-bold text-navy max-w-2xl mx-auto leading-tight text-balance"
+            className="text-[1.5rem] sm:text-[1.8rem] lg:text-[2.2rem] xl:text-[2.6rem] font-bold text-navy leading-tight whitespace-pre-line"
           >
-            Скорее всего, прямо сейчас у вас в голове один из этих вопросов
+            {f.title}
           </motion.h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {fears.map((fear, i) => (
+          {f.items.map((fear, i) => (
             <FearCard key={fear.num} fear={fear} index={i} />
           ))}
         </div>

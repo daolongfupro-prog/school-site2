@@ -1,3 +1,4 @@
+import { LanguageProvider } from './context/LanguageContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Fears from './components/Fears'
@@ -12,20 +13,22 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen font-sans">
-      <Header />
-      <main>
-        <Hero />
-        <Fears />
-        <UniqueMethod />
-        <OpenLesson />
-        <Teacher />
-        <Results />
-        <Testimonials />
-        <FAQ />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen font-sans">
+        <Header />
+        <main>
+          <Hero />
+          <Fears />
+          <UniqueMethod />
+          <OpenLesson />
+          <Teacher />
+          <Results />
+          <Testimonials />
+          <FAQ />
+          <FinalCTA />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   )
 }

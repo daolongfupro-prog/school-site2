@@ -1,15 +1,16 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
-const stats = [
-  { num: '22', label: 'года в профессии' },
-  { num: '99', label: 'видов массажа' },
-  { num: '100%', label: 'практики уже на 1-м занятии' },
-]
+const STAT_NUMS = ['23', '99', '5']
 
 export default function Teacher() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { t } = useLanguage()
+  const tc = t.teacher
+
+  const stats = STAT_NUMS.map((num, i) => ({ num, label: tc.statsCards[i] }))
 
   return (
     <section id="teacher" className="py-24 lg:py-32 bg-white overflow-hidden">
@@ -24,37 +25,59 @@ export default function Teacher() {
             transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative"
           >
-            {/* Background decoration */}
             <div
               className="absolute -inset-6 rounded-3xl pointer-events-none"
               style={{ background: 'linear-gradient(135deg, rgba(25,38,92,0.06) 0%, transparent 60%)' }}
             />
 
+            {/* Portrait photo */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-navy/12">
               <img
                 src="/images/lucia-portrait.jpg"
-                alt="Люция Камалетдинова — практикующий мастер и преподаватель"
+                alt={tc.name}
                 className="w-full object-cover object-top"
                 style={{ aspectRatio: '3/4', maxHeight: '580px' }}
               />
-            </div>
-
-            {/* Stat cards */}
-            {stats.map((s, i) => (
+              {/* Badge: Собственная методика обучения */}
               <motion.div
-                key={s.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.4 + i * 0.15, duration: 0.4 }}
-                className={`absolute bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10 ${
-                  i === 0 ? '-right-5 top-10' : i === 1 ? '-left-5 top-1/2 -translate-y-1/2' : '-right-5 bottom-20'
-                }`}
+                transition={{ delay: 0.55, duration: 0.4 }}
+                className="absolute -right-5 bottom-10 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
               >
-                <p className="font-extrabold text-navy text-2xl leading-none">{s.num}</p>
-                <p className="text-gray-400 text-xs mt-1 max-w-[90px] leading-snug">{s.label}</p>
+                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[2].label}</p>
               </motion.div>
-            ))}
+            </div>
+
+            {/* Diplomas photo */}
+            <div className="relative mt-4 rounded-2xl overflow-hidden shadow-lg shadow-navy/10">
+              <img
+                src="/images/photo_2024-11-17_19-06-42.jpg"
+                alt="Дипломы и награды"
+                className="w-full object-cover"
+              />
+              {/* Badge: Массажист международного уровня */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.4 }}
+                className="absolute -left-5 top-6 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+              >
+                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[0].label}</p>
+              </motion.div>
+              {/* Badge: Инновации в массаже */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.55, duration: 0.4 }}
+                className="absolute -right-5 bottom-6 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+              >
+                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[1].label}</p>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Text column */}
@@ -65,16 +88,16 @@ export default function Teacher() {
               transition={{ duration: 0.5 }}
               className="text-navy/40 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
             >
-              Преподаватель
+              {tc.tag}
             </motion.p>
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl lg:text-5xl font-bold text-navy mb-2 leading-tight"
+              className="text-[1.5rem] sm:text-[1.8rem] lg:text-[2.2rem] xl:text-[2.6rem] font-bold text-navy mb-2 leading-tight"
             >
-              Люция Камалетдинова
+              {tc.name}
             </motion.h2>
 
             <motion.p
@@ -83,7 +106,7 @@ export default function Teacher() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-navy/50 text-lg mb-8"
             >
-              Практикующий мастер и основатель Высшей Школы Массажа в Ташкенте
+              {tc.subtitle}
             </motion.p>
 
             {/* Credentials */}
@@ -93,12 +116,7 @@ export default function Teacher() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="space-y-3 mb-10"
             >
-              {[
-                '22 года в профессии',
-                'За карьеру освоила и систематизировала 99 видов массажа — это личный опыт, а не программа одного курса',
-                'Авторская методика: синтез классики, медицинской анатомии и эргономики',
-                'Диплом государственного образца для каждого выпускника',
-              ].map((item) => (
+              {tc.credentials.map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-5 h-5 rounded-full bg-navy/10 flex items-center justify-center mt-0.5">
                     <svg className="w-3 h-3 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,6 +128,25 @@ export default function Teacher() {
               ))}
             </motion.div>
 
+            {/* Trust stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap gap-8 mb-10"
+            >
+              {STAT_NUMS.map((num, i) => (
+                <div key={num} className="flex items-baseline gap-2.5">
+                  <span className="text-4xl font-bold leading-none" style={{ color: '#19265c' }}>
+                    {num}
+                  </span>
+                  <span className="text-navy/50 text-sm leading-tight whitespace-pre-line">
+                    {tc.statsLabels[i]}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+
             {/* Quote */}
             <motion.blockquote
               initial={{ opacity: 0, y: 20 }}
@@ -117,17 +154,16 @@ export default function Teacher() {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="relative bg-cream rounded-2xl p-7 overflow-hidden"
             >
-              {/* Large quote mark */}
               <span className="absolute -top-2 -left-1 text-[120px] font-black leading-none text-navy/8 select-none pointer-events-none">
                 "
               </span>
               <p className="text-navy/75 leading-relaxed text-[15px] italic relative z-10">
-                Когда я начинала 22 года назад, не было ни нормальных курсов, ни системы. Я училась методом проб и ошибок — и дорогой ценой поняла, что неправильная постановка рук калечит мастера быстрее, чем любой клиент.
+                {tc.quote1}
               </p>
               <p className="text-navy/75 leading-relaxed text-[15px] italic relative z-10 mt-4">
-                Именно поэтому я построила школу, которой не было, когда она была нужна мне: где учат не просто движениям, а пониманию. Каждый студент, который выходит из моей школы — это мастер, за которого мне не стыдно.
+                {tc.quote2}
               </p>
-              <p className="mt-5 text-navy font-semibold text-sm relative z-10">— Люция Камалетдинова</p>
+              <p className="mt-5 text-navy font-semibold text-sm relative z-10">{tc.quoteName}</p>
             </motion.blockquote>
           </div>
         </div>
