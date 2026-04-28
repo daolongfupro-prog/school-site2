@@ -14,8 +14,8 @@ const translations = {
       spotsLeft: 'Ближайшие открытые уроки:',
       spots: '10 и 20 числа.',
       spotsRight: 'Мест в зале всего 10 — мы работаем на качество вашей практики, даже на бесплатных занятиях.',
-      photoName: 'Живая практика',
-      photoRole: 'с первого дня',
+      photoName: 'Авторская методика обучения',
+      photoRole: 'Люции Камалетдиновой',
       badgeWhite: 'Диплом +\nСертификат',
       badgeGold: 'Окупаемость\nза 2 недели',
       scroll: 'Листайте',
@@ -37,6 +37,8 @@ const translations = {
       floatNum: '80%',
       floatLabel: 'от всего времени курса',
       floatSub: 'практики',
+      photoCaption: 'Живая практика',
+      photoCaptionSub: 'с первого дня',
       principles: [
         { num: '1', title: 'Практика с первого занятия — на живых людях', text: 'Никаких манекенов. Никаких видеороликов. С первого дня вы работаете руками на реальных моделях с разным тонусом, разной анатомией, разными запросами. Именно так нарабатывается настоящее чувство тела — то, за что клиенты возвращаются снова.' },
         { num: '2', title: 'Анатомия как язык, а не как предмет для зубрёжки', text: 'Большинство курсов дают схемы «делай вот так». Мы объясняем, почему. Вы понимаете, где крепится мышца, как она реагирует на давление и в каком направлении нужно работать. Это понимание не забывается — и оно защищает вашего клиента от ошибок.' },
@@ -181,6 +183,8 @@ const translations = {
       floatNum: '80%',
       floatLabel: "kurs vaqtining",
       floatSub: "amaliyot",
+      photoCaption: "Jonli amaliyot",
+      photoCaptionSub: "birinchi kundan",
       principles: [
         { num: '1', title: "Birinchi darsdan amaliyot — tirik odamlarda", text: "Hech qanday maneken yo'q. Hech qanday video yo'q. Birinchi kundan boshlab turli tonus, anatomiya va talablar bilan haqiqiy modellarda qo'l bilan ishlaysiz." },
         { num: '2', title: "Anatomiya — yodlash predmeti emas, til sifatida", text: "Ko'pchilik kurslar 'shunday qiling' sxemasini beradi. Biz nima uchunligini tushuntiramiz. Mushak qayerga birikishini, qanday reaksiya berishini va qaysi yo'nalishda ishlash kerakligini tushunasiz." },

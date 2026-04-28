@@ -132,10 +132,10 @@ export default function Hero() {
                   {/* Photo */}
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
                     <img
-                      src="/images/photo_2026-04-26_15-03-32.jpg"
+                      src="/images/lucia-flipchart.png"
                       alt={h.photoName}
-                      className="w-full object-cover object-top"
-                      style={{ aspectRatio: '3/4' }}
+                      className="w-full object-cover"
+                      style={{ aspectRatio: '4/5' }}
                     />
                     {/* Bottom gradient with name */}
                     <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-navy via-navy/60 to-transparent" />

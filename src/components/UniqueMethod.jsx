@@ -26,31 +26,17 @@ export default function UniqueMethod() {
 
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-navy/15">
               <img
-                src="/images/lucia-flipchart.png"
-                alt="Люция Камалетдинова объясняет анатомию на флипчарте"
-                className="w-full h-full object-cover"
-                style={{ aspectRatio: '4/5' }}
+                src="/images/photo_2026-04-26_15-03-32.jpg"
+                alt="Живая практика на занятии"
+                className="w-full h-full object-cover object-top"
+                style={{ aspectRatio: '3/4' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="text-white font-semibold text-sm">{m.photoCaption}</p>
+                <p className="text-white/55 text-xs mt-0.5">{m.photoCaptionSub}</p>
+              </div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="absolute -bottom-5 left-8 bg-white rounded-2xl px-5 py-4 shadow-xl shadow-navy/10 flex items-center gap-4"
-            >
-              <div className="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <p className="font-bold text-navy text-sm">{m.floatNum} {m.floatSub}</p>
-                <p className="text-gray-400 text-xs">{m.floatLabel}</p>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Text */}
@@ -63,6 +49,24 @@ export default function UniqueMethod() {
             >
               {m.tag}
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.08 }}
+              className="inline-flex items-center gap-4 bg-white rounded-2xl px-5 py-4 shadow-xl shadow-navy/10 mb-6"
+            >
+              <div className="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-bold text-navy text-sm">{m.floatNum} {m.floatSub}</p>
+                <p className="text-gray-400 text-xs">{m.floatLabel}</p>
+              </div>
+            </motion.div>
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
