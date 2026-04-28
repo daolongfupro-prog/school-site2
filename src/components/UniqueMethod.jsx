@@ -26,7 +26,7 @@ export default function UniqueMethod() {
 
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-navy/15">
               <img
-                src="/images/photo_2026-04-26_15-03-32.jpg"
+                src="/images/massage.png"
                 alt="Живая практика на занятии"
                 className="w-full h-full object-cover object-top"
                 style={{ aspectRatio: '3/4' }}

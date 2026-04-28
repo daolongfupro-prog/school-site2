@@ -132,7 +132,7 @@ export default function Hero() {
                   {/* Photo */}
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
                     <img
-                      src="/images/lucia-flipchart.png"
+                      src="/images/photo_2026-04-26_15-03-32.jpg"
                       alt={h.photoName}
                       className="w-full object-cover"
                       style={{ aspectRatio: '4/5' }}
