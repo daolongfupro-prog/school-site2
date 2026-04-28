@@ -61,16 +61,6 @@ export default function Teacher() {
                   className="w-full object-cover"
                 />
               </div>
-              {/* Badge: Инновации в массаже — слева, выходит за фото */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                className="absolute -left-5 top-5 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
-              >
-                <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[1].label}</p>
-              </motion.div>
               {/* Badge: Массажист международного уровня — справа, выходит за фото */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
