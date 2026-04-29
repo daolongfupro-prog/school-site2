@@ -13,11 +13,11 @@ const fadeUp = {
 
 function CombinedLine({ line }) {
   // Split on 7-million and standalone 12
-  const parts = line.split(/(7[\s,]?000[\s,]?000|\b12\b)/)
+  const parts = line.split(/(\d[\s,]?000[\s,]?000|\b12\b)/)
   return (
     <span className="block leading-[1.2]">
       {parts.map((part, i) => {
-        if (/7[\s,]?000[\s,]?000/.test(part)) {
+        if (/\d[\s,]?000[\s,]?000/.test(part)) {
           return (
             <span key={i} className="relative inline-block font-black" style={{ color: '#c9a45a' }}>
               {part}
