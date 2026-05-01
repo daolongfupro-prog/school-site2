@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
+import { getNextLessonDate } from '../utils/lessonDate'
 
 const TG = 'https://t.me/YOUR_BOT_HERE'
 
@@ -110,7 +111,7 @@ export default function Hero() {
 
             <motion.p variants={fadeUp} className="text-white/35 text-sm mt-4">
               {h.spotsLeft}{' '}
-              <span className="text-white/60 font-semibold">{h.spots}</span>
+              <span className="text-white/70 font-bold">{getNextLessonDate()}</span>
               {' '}{h.spotsRight}
             </motion.p>
           </motion.div>

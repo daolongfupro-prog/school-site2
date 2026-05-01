@@ -4,6 +4,19 @@ import { useLanguage } from '../context/LanguageContext'
 
 const TG = 'https://t.me/YOUR_BOT_HERE'
 
+function HighlightMoney({ text }) {
+  const parts = text.split(/(\d[\d\s]*000\s+сум)/)
+  return (
+    <>
+      {parts.map((part, i) =>
+        /\d[\d\s]*000\s+сум/.test(part)
+          ? <strong key={i} style={{ color: '#c9a45a' }} className="font-black">{part}</strong>
+          : part
+      )}
+    </>
+  )
+}
+
 const icons = [
   <svg key="0" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -84,7 +97,7 @@ export default function Results() {
                 {item.title}
               </h3>
               <p className={`text-[15px] leading-relaxed relative z-10 ${item.highlight ? 'text-white/70' : 'text-gray-500'}`}>
-                {item.text}
+                {item.highlight ? <HighlightMoney text={item.text} /> : item.text}
               </p>
               {item.subtext && (
                 <p className={`mt-3 text-[14px] font-semibold leading-snug relative z-10 ${item.highlight ? 'text-white/90' : 'text-navy/75'}`}>

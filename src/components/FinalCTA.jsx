@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
+import { getNextLessonDate } from '../utils/lessonDate'
 
 const TG = 'https://t.me/YOUR_BOT_HERE'
 
@@ -38,7 +39,7 @@ export default function FinalCTA() {
             className="w-2.5 h-2.5 rounded-full bg-red-400"
           />
           <span className="text-white/80 text-sm font-medium">
-            {c.spots} <span className="text-white font-bold">{c.spotsNum}</span> {c.spotsRight}
+            {c.spots} <span className="text-white font-bold">{c.spotsNum}</span> · урок <span className="text-white font-bold">{getNextLessonDate()}</span>
           </span>
         </motion.div>
 
@@ -82,26 +83,6 @@ export default function FinalCTA() {
               </div>
             ))}
           </div>
-        </motion.div>
-
-        {/* Schedule */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="flex flex-col sm:flex-row gap-3 justify-center mb-10"
-        >
-          {c.slots.map((slot) => (
-            <div
-              key={slot}
-              className="bg-white/8 border border-white/15 rounded-xl px-5 py-3 flex items-center gap-3"
-            >
-              <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="text-white/70 text-sm font-medium">{slot}</span>
-            </div>
-          ))}
         </motion.div>
 
         {/* Main CTA */}
