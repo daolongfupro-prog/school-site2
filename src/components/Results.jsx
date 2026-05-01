@@ -134,7 +134,7 @@ export default function Results() {
           {/* Text + button */}
           <div className="text-center px-8 py-8">
             <p className="text-navy font-bold text-xl sm:text-[1.45rem] leading-snug mb-8 max-w-md mx-auto">
-              Сделайте первый шаг к доходу в 8&nbsp;000&nbsp;000 сум — запишитесь на открытый урок
+              Сделайте первый шаг к доходу в 8&nbsp;000&nbsp;000 сум - запишитесь на открытый урок
             </p>
             <a
               href={TG}

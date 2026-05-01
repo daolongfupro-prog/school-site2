@@ -34,9 +34,6 @@ function TestimonialCard({ item, index }) {
           <p className="text-navy font-semibold text-sm">{item.name}</p>
           <p className="text-gray-400 text-xs">{item.age}</p>
         </div>
-        <span className="ml-auto text-[10px] text-gray-300 font-medium uppercase tracking-wider">
-          {t.testimonials.replacePic}
-        </span>
       </div>
     </motion.div>
   )
@@ -70,23 +67,7 @@ export default function Testimonials() {
           </motion.h2>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-cream border-2 border-dashed border-navy/15 rounded-2xl p-8 mb-8 text-center"
-        >
-          <div className="w-12 h-12 rounded-2xl bg-navy/8 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-6 h-6 text-navy/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <p className="text-navy/60 font-semibold mb-1">{tm.screenshotTitle}</p>
-          <p className="text-gray-400 text-sm">{tm.screenshotSub}</p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tm.items.map((item, i) => (
             <TestimonialCard key={i} item={item} index={i} />
           ))}
