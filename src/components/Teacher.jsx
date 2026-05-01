@@ -37,7 +37,7 @@ export default function Teacher() {
                   src="/images/lucia-portrait.jpg"
                   alt={tc.name}
                   className="w-full object-cover object-top"
-                  style={{ aspectRatio: '3/4', maxHeight: '580px' }}
+                  style={{ aspectRatio: '3/4', maxHeight: 'clamp(320px, 50vh, 580px)' }}
                 />
               </div>
               {/* Badge: Собственная методика обучения — вверху */}
@@ -46,7 +46,7 @@ export default function Teacher() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.55, duration: 0.4 }}
-                className="absolute -right-5 top-8 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+                className="absolute right-0 lg:-right-5 top-8 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
               >
                 <p className="text-navy font-bold text-xs max-w-[145px] leading-snug whitespace-pre-line">{stats[2].label}</p>
               </motion.div>
@@ -67,7 +67,7 @@ export default function Teacher() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.55, duration: 0.4 }}
-                className="absolute -right-5 bottom-5 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
+                className="absolute right-0 lg:-right-5 bottom-5 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-navy/10"
               >
                 <p className="text-navy font-bold text-xs max-w-[110px] leading-snug whitespace-pre-line">{stats[0].label}</p>
               </motion.div>

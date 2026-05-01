@@ -62,7 +62,7 @@ export default function Hero() {
       <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 lg:px-12 pt-52 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 lg:px-12 pt-36 sm:pt-44 lg:pt-52 pb-14 sm:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_460px] gap-12 xl:gap-20 items-center">
 
           {/* ── Left: copy ── */}
@@ -77,7 +77,7 @@ export default function Hero() {
             {/* Headline */}
             <motion.h1
               variants={fadeUp}
-              className="text-[1.1rem] sm:text-[1.35rem] lg:text-[2.0rem] xl:text-[2.4rem] font-bold text-white leading-[1.25] tracking-tight mb-6"
+              className="text-[1.3rem] sm:text-[1.5rem] lg:text-[2.0rem] xl:text-[2.4rem] font-bold text-white leading-[1.25] tracking-tight mb-6"
             >
               <span className="block">{h.h1[0]}</span>
               <span className="block">{h.h1[1]}</span>
@@ -88,7 +88,7 @@ export default function Hero() {
             {/* Subheadline */}
             <motion.p
               variants={fadeUp}
-              className="text-white/65 text-sm lg:text-base leading-relaxed mb-10 max-w-[520px]"
+              className="text-white/65 text-base lg:text-base leading-relaxed mb-10 max-w-[520px]"
             >
               {h.sub}
             </motion.p>
