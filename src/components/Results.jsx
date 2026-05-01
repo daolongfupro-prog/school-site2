@@ -23,7 +23,7 @@ export default function Results() {
   const r = t.results
 
   return (
-    <section id="results" className="py-24 lg:py-32 bg-cream overflow-hidden">
+    <section id="results" className="py-20 lg:py-24 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 lg:px-12">
         <div ref={ref} className="text-center mb-16">
           <motion.p
@@ -52,7 +52,7 @@ export default function Results() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {r.items.map((item, i) => (
             <motion.div
               key={item.num}
@@ -86,36 +86,68 @@ export default function Results() {
               <p className={`text-[15px] leading-relaxed relative z-10 ${item.highlight ? 'text-white/70' : 'text-gray-500'}`}>
                 {item.text}
               </p>
-              {item.highlight && (
-                <div className="mt-6 relative z-10 p-4 bg-white/10 rounded-xl border border-white/15">
-                  <p className="text-white font-bold text-lg">{r.priceNum}</p>
-                  <p className="text-white/55 text-sm">{r.priceLabel}</p>
-                </div>
+              {item.subtext && (
+                <p className={`mt-3 text-[14px] font-semibold leading-snug relative z-10 ${item.highlight ? 'text-white/90' : 'text-navy/75'}`}>
+                  {item.subtext}
+                </p>
               )}
             </motion.div>
           ))}
         </div>
 
+        {/* Documents + CTA */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center bg-white rounded-2xl border border-gray-100 px-8 py-10 max-w-2xl mx-auto"
+          transition={{ duration: 0.7 }}
+          className="rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm"
         >
-          <p className="text-navy font-semibold text-xl mb-2">{r.bridgeTitle}</p>
-          <p className="text-gray-500 mb-8">{r.bridgeSub}</p>
-          <a
-            href={TG}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-navy text-white font-bold px-8 py-4 rounded-2xl text-base hover:bg-navy-light hover:shadow-xl hover:shadow-navy/20 hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z" />
-            </svg>
-            {r.cta}
-          </a>
+          {/* Documents visual */}
+          <div className="relative bg-gradient-to-b from-navy/5 to-transparent pt-8 pb-2 flex justify-center items-end min-h-[180px] sm:min-h-[230px]">
+            <div className="relative flex items-end justify-center">
+              {/* Certificate – landscape, behind, leaning left */}
+              <div
+                className="relative z-10 drop-shadow-xl"
+                style={{ transform: 'rotate(-4deg) translate(-12px, 10px)' }}
+              >
+                <img
+                  src="/images/Sertificate.png"
+                  alt="Сертификат"
+                  className="h-28 sm:h-36 w-auto rounded-xl"
+                />
+              </div>
+              {/* Diploma – portrait, in front, slight right lean */}
+              <div
+                className="relative z-20 drop-shadow-2xl"
+                style={{ transform: 'rotate(5deg) translate(8px, 0px)' }}
+              >
+                <img
+                  src="/images/Diplom.png"
+                  alt="Диплом"
+                  className="h-36 sm:h-44 w-auto rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Text + button */}
+          <div className="text-center px-8 py-8">
+            <p className="text-navy font-bold text-xl sm:text-[1.45rem] leading-snug mb-8 max-w-md mx-auto">
+              Сделайте первый шаг к доходу в 8&nbsp;000&nbsp;000 сум — запишитесь на открытый урок
+            </p>
+            <a
+              href={TG}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-navy text-white font-bold px-8 py-4 rounded-2xl text-base hover:bg-navy-light hover:shadow-xl hover:shadow-navy/20 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z" />
+              </svg>
+              {r.cta}
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
