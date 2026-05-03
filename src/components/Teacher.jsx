@@ -37,7 +37,7 @@ export default function Teacher() {
                   src="/images/lucia-portrait.jpg"
                   alt={tc.name}
                   className="w-full object-cover object-top"
-                  style={{ aspectRatio: '3/4', maxHeight: 'clamp(320px, 50vh, 580px)' }}
+                  style={{ aspectRatio: '3/4', maxHeight: '520px' }}
                 />
               </div>
               {/* Badge: Собственная методика обучения — вверху */}
